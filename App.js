@@ -33,6 +33,7 @@ export default function App() {
     if(camRef){
       const data = await camRef.current.takePictureAsync()
       setCapturedPhoto(data.uri)
+      console.log(data);
     }
   }
 
@@ -41,6 +42,7 @@ export default function App() {
       <Camera
       style={styles.camera}
         type={type}
+        ref={camRef}
       >
         <View styles={styles.contentButtons}>
           <TouchableOpacity 
@@ -59,7 +61,7 @@ export default function App() {
             style={styles.buttonCamera}
             onPress={takePicture}
           >
-            <FontAwesome name="exchange" size={23} color="white"></FontAwesome>
+            <FontAwesome name="camera" size={23} color="#fff"></FontAwesome>
           </TouchableOpacity>
         </View>
       </Camera>
@@ -94,6 +96,15 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   buttonCamera: {
-
+    position: "absolute",
+    top: 725,
+    right: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "red",
+    margin: 20,
+    height: 55,
+    width: 55,
+    borderRadius: 50,
   }
 });
